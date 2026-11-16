@@ -1,0 +1,8 @@
+[build]
+  command = "pnpm --filter @carbon/public build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@source "../../../packages/ui/src";
+
+@theme {
+  --color-carbon: #0F0F10;
+  --color-surface: #161617;
+  --color-surface-raised: #1F1F21;
+  --color-text: #F2F2F0;
+  --color-muted: #9A9A9A;
+  --color-cyan: #00B8F0;
+  --color-cyan-hover: #38C5F5;
+  --color-cyan-light: #7DD3FC;
+  --color-magenta: #FF2E93;
+  --color-magenta-hover: #F43F5E;
+  --color-azure: #00B8F0;
+  --color-azure-hover: #38C5F5;
+  --color-success: #2DD4A0;
+  --color-danger: #FF5D6C;
+  --color-warning: #FF9F5A;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  background-color: #0F0F10;
+  color: #F2F2F0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #F2F2F0;
+  background: #0F0F10;
+}
+
+.bg-carbon {
+  background-color: #0F0F10;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.015em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Print Styles for Official Workshop Documents */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 11pt !important;
+  }
+  .no-print, aside, header, nav, button {
+    display: none !important;
+  }
+  .fixed.inset-0 {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    width: 100% !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .max-h-\[94vh\], .max-h-\[90vh\], .max-h-\[88vh\] {
+    max-height: none !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+}

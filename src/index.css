@@ -1,0 +1,392 @@
+@import "tailwindcss";
+
+
+
+/* Tailwind CSS v4 theme configuration */
+/* stylelint-disable at-rule-no-unknown */
+
+@theme {
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --color-carbon-black: #0B0D12;
+  --color-graphite: #151922;
+  --color-brand-navy: #172B57;
+  --color-slate-blue: #7B93BE;
+  --color-off-white: #EEF1F6;
+  --color-warm-amber: #FFB020;
+}
+
+@layer base {
+  :root {
+    --bg-base: #0B0D12;
+    --bg-surface: #151922;
+    --navy-panel: rgba(23, 43, 87, 0.42);
+    --navy-panel-solid: #172B57;
+    --border-glass: rgba(123, 147, 190, 0.22);
+    --text-primary: #EEF1F6;
+    --text-secondary: #7B93BE;
+    --accent-amber: #FFB020;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+  }
+
+  html.light {
+    --bg-base: #F4F6F9;
+    --bg-surface: #FFFFFF;
+    --navy-panel: rgba(23, 43, 87, 0.08);
+    --navy-panel-solid: #F0F4FA;
+    --border-glass: rgba(23, 43, 87, 0.15);
+    --text-primary: #0B0D12;
+    --text-secondary: #364968;
+    --accent-amber: #D98804;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0D12;
+  }
+  html.light ::-webkit-scrollbar-track {
+    background: #E2E8F0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #172B57;
+    border-radius: 9999px;
+    border: 1px solid rgba(123, 147, 190, 0.3);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #7B93BE;
+  }
+}
+
+/* ==========================================================================
+   CARBON FIBER TWILL WEAVE BACKGROUND & SHIMMER
+   ========================================================================== */
+.bg-carbon-twill {
+  background-color: #0B0D12;
+  background-image:
+    linear-gradient(27deg, #151922 5px, transparent 5px),
+    linear-gradient(207deg, #151922 5px, transparent 5px),
+    linear-gradient(117deg, #151922 5px, transparent 5px),
+    linear-gradient(297deg, #151922 5px, transparent 5px),
+    linear-gradient(45deg, rgba(23, 43, 87, 0.3) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(23, 43, 87, 0.3) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(23, 43, 87, 0.25) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(23, 43, 87, 0.25) 75%);
+  background-size: 16px 16px, 16px 16px, 16px 16px, 16px 16px, 8px 8px, 8px 8px, 8px 8px, 8px 8px;
+}
+
+html.light .bg-carbon-twill {
+  background-color: #F4F6FA;
+  background-image:
+    linear-gradient(27deg, #E2E8F0 5px, transparent 5px),
+    linear-gradient(207deg, #E2E8F0 5px, transparent 5px),
+    linear-gradient(117deg, #E2E8F0 5px, transparent 5px),
+    linear-gradient(297deg, #E2E8F0 5px, transparent 5px),
+    linear-gradient(45deg, rgba(23, 43, 87, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(23, 43, 87, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(23, 43, 87, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(23, 43, 87, 0.05) 75%);
+  background-size: 16px 16px, 16px 16px, 16px 16px, 16px 16px, 8px 8px, 8px 8px, 8px 8px, 8px 8px;
+}
+
+/* Subtle Cursor Weave Shimmer */
+.weave-shimmer {
+  position: relative;
+}
+.weave-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(123, 147, 190, 0.08),
+    transparent 60%
+  );
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   GLASSMORPHISM: FROSTED NAVY PANELS
+   ========================================================================== */
+.glass-navy {
+  background: rgba(23, 43, 87, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(123, 147, 190, 0.22);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+html.light .glass-navy {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(23, 43, 87, 0.16);
+  box-shadow: 0 8px 30px 0 rgba(23, 43, 87, 0.08);
+}
+
+/* Solid fallback for reduced motion or no backdrop-filter */
+@media (prefers-reduced-motion: reduce) {
+  .glass-navy {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #151922 !important;
+  }
+  html.light .glass-navy {
+    background: #FFFFFF !important;
+  }
+}
+
+.glass-navy-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-navy-hover:hover {
+  background: rgba(23, 43, 87, 0.65);
+  border-color: rgba(123, 147, 190, 0.45);
+  box-shadow: 0 12px 40px 0 rgba(11, 13, 18, 0.6), 0 0 20px rgba(123, 147, 190, 0.15);
+  transform: translateY(-2px);
+}
+html.light .glass-navy-hover:hover {
+  background: #FFFFFF;
+  border-color: rgba(23, 43, 87, 0.3);
+  box-shadow: 0 12px 30px 0 rgba(23, 43, 87, 0.12);
+}
+
+/* Dense form / table solid surfaces for high readability */
+.dense-surface {
+  background: #11141C;
+  border: 1px solid rgba(123, 147, 190, 0.2);
+}
+html.light .dense-surface {
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+}
+
+/* ==========================================================================
+   SOFT NEUMORPHISM FOR CONTROLS ONLY (Toggles, Switches, Dials, Steppers)
+   ========================================================================== */
+.neu-control {
+  background: #131722;
+  box-shadow: 
+    3px 3px 7px rgba(0, 0, 0, 0.6), 
+    -2px -2px 6px rgba(123, 147, 190, 0.12);
+  border: 1px solid rgba(123, 147, 190, 0.14);
+  transition: all 0.18s ease;
+}
+.neu-control:hover {
+  box-shadow: 
+    4px 4px 10px rgba(0, 0, 0, 0.75), 
+    -2px -2px 7px rgba(123, 147, 190, 0.22);
+}
+.neu-control:active, .neu-control-active {
+  background: #0E121B;
+  box-shadow: 
+    inset 2px 2px 5px rgba(0, 0, 0, 0.75), 
+    inset -2px -2px 5px rgba(123, 147, 190, 0.1);
+  border-color: rgba(123, 147, 190, 0.28);
+}
+
+html.light .neu-control {
+  background: #F1F4F9;
+  box-shadow: 
+    3px 3px 6px rgba(180, 190, 205, 0.7), 
+    -2px -2px 6px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(23, 43, 87, 0.12);
+}
+html.light .neu-control:active, html.light .neu-control-active {
+  background: #E8EDF5;
+  box-shadow: 
+    inset 2px 2px 5px rgba(180, 190, 205, 0.7), 
+    inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+}
+
+/* Neumorphic Stepper Button */
+.neu-stepper {
+  background: linear-gradient(145deg, #161B27, #10131D);
+  box-shadow: 2px 2px 5px #07090D, -1px -1px 4px rgba(123, 147, 190, 0.12);
+  border: 1px solid rgba(123, 147, 190, 0.15);
+  border-radius: 8px;
+}
+.neu-stepper:hover {
+  background: linear-gradient(145deg, #1A2131, #131722);
+}
+.neu-stepper:active {
+  box-shadow: inset 2px 2px 4px #07090D, inset -1px -1px 3px rgba(123, 147, 190, 0.1);
+}
+
+/* ==========================================================================
+   SIGNATURE BRAND DETAILS: DIAGONAL CLIPPED CORNERS
+   ========================================================================== */
+/* Both top-right and bottom-left clipped corner */
+.clip-brand {
+  clip-path: polygon(
+    0 0, 
+    calc(100% - 16px) 0, 
+    100% 16px, 
+    100% 100%, 
+    16px 100%, 
+    0 calc(100% - 16px)
+  );
+}
+
+/* Large card clip */
+.clip-brand-lg {
+  clip-path: polygon(
+    0 0, 
+    calc(100% - 24px) 0, 
+    100% 24px, 
+    100% 100%, 
+    24px 100%, 
+    0 calc(100% - 24px)
+  );
+}
+
+/* Single corner clip top-right */
+.clip-tr {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+/* Single corner clip bottom-left */
+.clip-bl {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+
+/* Decorative corner accents matching the PDF presentation */
+.brand-corner-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 28px 28px 0;
+  border-color: transparent #7B93BE transparent transparent;
+  pointer-events: none;
+}
+
+.brand-corner-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 28px 0 0 28px;
+  border-color: transparent transparent transparent #7B93BE;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   PHILIPPINE LTO PLATE-STYLE TAG
+   ========================================================================== */
+.plate-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  background: #11141B;
+  border: 1.5px solid #7B93BE;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+.plate-tag::before, .plate-tag::after {
+  content: '•';
+  font-size: 8px;
+  color: #7B93BE;
+  line-height: 1;
+}
+
+html.light .plate-tag {
+  background: #F8FAFC;
+  border: 1.5px solid #172B57;
+  color: #0B0D12;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+html.light .plate-tag::before, html.light .plate-tag::after {
+  color: #172B57;
+}
+
+/* Job Order Tag */
+.job-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  background: rgba(23, 43, 87, 0.7);
+  border: 1px solid rgba(123, 147, 190, 0.4);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #EEF1F6;
+}
+
+/* Action button: Amber sharp accent */
+.btn-amber {
+  background: #FFB020;
+  color: #0B0D12;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(255, 176, 32, 0.25);
+}
+.btn-amber:hover {
+  background: #FFC04D;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 176, 32, 0.4);
+}
+.btn-amber:active {
+  transform: translateY(0);
+}
+
+/* Action button: Navy primary */
+.btn-navy {
+  background: #172B57;
+  color: #EEF1F6;
+  border: 1px solid rgba(123, 147, 190, 0.35);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-navy:hover {
+  background: #203A74;
+  border-color: #7B93BE;
+  color: #FFFFFF;
+}
+
+/* Font helpers */
+.font-heading {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.font-body {
+  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
