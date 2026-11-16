@@ -2,7 +2,7 @@
 # Default site: Public Customer Website
 
 [build]
-  command = "corepack enable && pnpm --filter @carbon/public build"
+  command = "pnpm --filter @carbon/public build"
   publish = "apps/public/dist"
 
 [build.environment]
