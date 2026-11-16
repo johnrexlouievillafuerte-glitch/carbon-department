@@ -2,11 +2,12 @@
 # Default site: Public Customer Website
 
 [build]
-  command = "pnpm --filter @carbon/public build"
+  command = "corepack enable && pnpm --filter @carbon/public build"
   publish = "apps/public/dist"
 
 [build.environment]
   NODE_VERSION = "20"
+  PNPM_FLAGS = "--no-frozen-lockfile"
 
 [[redirects]]
   from = "/*"

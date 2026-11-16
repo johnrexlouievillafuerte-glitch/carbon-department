@@ -1,6 +1,7 @@
 {
   "name": "carbon-department",
   "private": true,
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "concurrently -n server,public,admin -c blue,green,magenta \"pnpm --filter @carbon/server dev\" \"pnpm --filter @carbon/public dev\" \"pnpm --filter @carbon/admin dev\"",
     "dev:server": "pnpm --filter @carbon/server dev",
